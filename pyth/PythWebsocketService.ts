@@ -1,6 +1,7 @@
 import connection from './connection.js';
+import { WebSocket } from 'ws';
 
-let subscribers = new Set<WebSocket>();
+const subscribers = new Set<WebSocket>();
 
 export const PythWebSocketService = () => {
     const priceIds: string[] = [
@@ -11,7 +12,6 @@ export const PythWebSocketService = () => {
     connection.subscribePriceFeedUpdates(priceIds, (priceFeed): void => {
         subscribers.forEach((subscriber) => {
             try {
-                const priceData = priceFeed.getPriceNoOlderThan(60);
                 subscriber.send(JSON.stringify(priceFeed));
             } catch (error) {
                 console.error('Failed to send message to subscriber:', error);

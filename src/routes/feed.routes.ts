@@ -1,10 +1,11 @@
-import { FastifyInstance, FastifyPluginCallback, FastifyRequest } from 'fastify';
+import { FastifyInstance } from 'fastify';
 import PythWebSocketService from '../../pyth/PythWebsocketService.js';
+import { WebSocket } from 'ws';
 
 const PriceFeedRoutes = async (fastify: FastifyInstance) => {
     const pythWebSocket = PythWebSocketService();
 
-    fastify.get('/ws', { websocket: true }, (connection: any, req: FastifyRequest) => {
+    fastify.get('/ws', { websocket: true }, (connection: WebSocket) => {
         try {
             console.log('Client connected to WebSocket');
 
