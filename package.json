@@ -1,0 +1,29 @@
+{
+    "name": "phoenix",
+    "version": "1.0.0",
+    "main": "server.ts",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc -p tsconfig.json",
+        "start": "node dist/server.js | pino-pretty"
+    },
+    "keywords": [
+        "solana"
+    ],
+    "author": "Jackdijkema",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "@fastify/websocket": "^11.0.1",
+        "@pythnetwork/price-service-client": "^1.9.0",
+        "dotenv": "^16.4.5",
+        "fastify": "^5.0.0",
+        "pino-pretty": "^11.2.2"
+    },
+    "type": "module",
+    "devDependencies": {
+        "@types/node": "^22.5.5",
+        "@types/ws": "^8.5.12",
+        "typescript": "^5.6.2"
+    }
+}
